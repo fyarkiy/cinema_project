@@ -21,7 +21,6 @@ public class MovieDaoImpl implements MovieDao {
             transaction = session.beginTransaction();
             Long utemId = (Long) session.save(movie);
             transaction.commit();
-            movie.setId(utemId);
             return movie;
         } catch (Exception e) {
             if (transaction != null) {
