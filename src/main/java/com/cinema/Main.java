@@ -1,17 +1,70 @@
 package com.cinema;
 
 import com.cinema.lib.Injector;
+import com.cinema.model.CinemaHall;
 import com.cinema.model.Movie;
+import com.cinema.model.MovieSession;
+import com.cinema.service.CinemaHallService;
 import com.cinema.service.MovieService;
+import com.cinema.service.MovieSessionService;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Main {
     private static Injector injector = Injector.getInstance("com.cinema");
 
     public static void main(String[] args) {
-        Movie movie = new Movie();
-        movie.setTitle("Fast and Furious");
+        Movie fastFurious = new Movie();
+        fastFurious.setTitle("Fast and Furious");
+        fastFurious.setDescritpion("action");
         MovieService movieService = (MovieService) injector.getInstance(MovieService.class);
-        movieService.add(movie);
+        movieService.add(fastFurious);
+        Movie bugs = new Movie();
+        bugs.setTitle("Bugs");
+        bugs.setDescritpion("Animation");
+        movieService.add(bugs);
         movieService.getAll().forEach(System.out::println);
+        CinemaHall redHall = new CinemaHall();
+        redHall.setCapacity(100);
+        redHall.setDescription("Red");
+        CinemaHallService cinemaHallService = (CinemaHallService) injector
+                .getInstance(CinemaHallService.class);
+        cinemaHallService.add(redHall);
+
+        CinemaHall blueHall = new CinemaHall();
+        blueHall.setCapacity(120);
+        blueHall.setDescription("Blue");
+        cinemaHallService.add(blueHall);
+
+        MovieSession morningSession = new MovieSession();
+        morningSession.setCinemaHall(redHall);
+        morningSession.setMovie(fastFurious);
+        morningSession.setShowTime(LocalDateTime.of(2020, 10, 10, 10, 00, 00));
+        MovieSessionService movieSessionService = (MovieSessionService) injector
+                .getInstance(MovieSessionService.class);
+        movieSessionService.add(morningSession);
+
+        MovieSession afternoonSession = new MovieSession();
+        afternoonSession.setCinemaHall(blueHall);
+        afternoonSession.setMovie(fastFurious);
+        afternoonSession.setShowTime(LocalDateTime.of(2020, 10, 10, 16, 00, 00));
+        movieSessionService.add(afternoonSession);
+
+        MovieSession morningSessionAt13 = new MovieSession();
+        morningSessionAt13.setCinemaHall(redHall);
+        morningSessionAt13.setMovie(bugs);
+        morningSessionAt13.setShowTime(LocalDateTime.of(2020, 10, 10, 13, 00, 00));
+        movieSessionService.add(morningSessionAt13);
+
+        MovieSession tomorrowSession = new MovieSession();
+        tomorrowSession.setCinemaHall(redHall);
+        tomorrowSession.setMovie(fastFurious);
+        tomorrowSession.setShowTime(LocalDateTime.of(2020, 10, 11, 21, 00, 00));
+        movieSessionService.add(tomorrowSession);
+
+        movieService.getAll().forEach(System.out::println);
+        cinemaHallService.getAll().forEach(System.out::println);
+        movieSessionService.findAvailableSessions(1L, LocalDate.of(2020, 10, 10))
+                .forEach(System.out::println);
     }
 }

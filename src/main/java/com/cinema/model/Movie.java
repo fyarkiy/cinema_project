@@ -1,6 +1,7 @@
 package com.cinema.model;
 
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "movie_id")
     private Long id;
     private String title;
     private String descritpion;
@@ -60,8 +62,8 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie{ id=" + id
-                + ", title='" + title + '\''
-                + ", descritpion='" + descritpion + "' }";
+        return "Movie{ id = " + id
+                + ", title = '" + title + '\''
+                + ", descritpion = '" + descritpion + "' }";
     }
 }
