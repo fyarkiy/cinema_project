@@ -43,8 +43,8 @@ public class MovieSessionDaoImpl implements MovieSessionDao {
     public List<MovieSession> findAvailableSessions(Long movieId, LocalDate date) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-            CriteriaQuery<MovieSession> allAvailableSessionsQuery = criteriaBuilder
-                    .createQuery(MovieSession.class);
+            CriteriaQuery<MovieSession> allAvailableSessionsQuery =
+                    criteriaBuilder.createQuery(MovieSession.class);
             Root<MovieSession> root = allAvailableSessionsQuery.from(MovieSession.class);
             root.fetch("movie");
             root.fetch("cinemaHall");
