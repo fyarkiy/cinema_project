@@ -15,19 +15,18 @@ public class HashUtil {
         return salt;
     }
 
-    public static String hashedPassword(String password, byte[] salt) {
-        StringBuilder hashPassword = new StringBuilder();
+    public static String hashPassword(String password, byte[] salt) {
+        StringBuilder hashedPassword = new StringBuilder();
         try {
             MessageDigest messageDigest = MessageDigest.getInstance(HASH_ALGO);
             messageDigest.update(salt);
             byte[] digest = messageDigest.digest(password.getBytes());
             for (Byte b : digest) {
-                hashPassword.append(String.format("%02x", b));
+                hashedPassword.append(String.format("%02x", b));
             }
         } catch (NoSuchAlgorithmException ex) {
             throw new PasswordEncryptionException("Algorithm for salt does not exist", ex);
         }
-        return hashPassword.toString();
+        return hashedPassword.toString();
     }
-
 }
