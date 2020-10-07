@@ -10,7 +10,7 @@ import com.cinema.util.HashUtil;
 @Dao
 public class AuthenticationServiceImpl implements AuthenticationService {
     @Inject
-    UserService userService;
+    private UserService userService;
 
     @Override
     public User login(String email, String password) throws AuthenticationException {
@@ -21,11 +21,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public User register(String email, String password) {
-        byte[] salt = HashUtil.getSalt();
         User user = new User();
-        user.setPassword(HashUtil.hashPassword(password,salt));
+        user.setPassword(password);
         user.setEmail(email);
-        user.setSalt(salt);
         return userService.add(user);
     }
 }
