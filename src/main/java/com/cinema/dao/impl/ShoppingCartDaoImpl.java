@@ -41,9 +41,6 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
             Query<ShoppingCart> cartQuery =
                     session.createQuery("from ShoppingCart sc "
                                     + " left join fetch sc.tickets tickets "
-                                    + " left join fetch tickets.movieSession movieSession "
-                                    + " left join fetch tickets.movieSession.movie movie "
-                                    + " left join fetch tickets.movieSession.cinemaHall cinemaHall "
                                     + "join fetch sc.user where sc.user =: user ",
                             ShoppingCart.class);
             cartQuery.setParameter("user", user);
@@ -64,7 +61,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataProcessingException("can't update shopping cart " + shoppingCart, e);
+            throw new DataProcessingException("Can't update the shopping cart " + shoppingCart, e);
         } finally {
             if (session != null) {
                 session.close();

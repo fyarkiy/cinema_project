@@ -77,19 +77,14 @@ public class Main {
         authenticationService.register("ma@gmail.com", "dcba");
         UserService userService = (UserService) injector.getInstance(UserService.class);
         User userMa = userService.findByEmail("ma@gmail.com").get();
-        //authenticationService.register("ma@gmail.com", "dcba");
+        authenticationService.register("ma@gmail.com", "dcba");
         ShoppingCartService shoppingCartService =
                 (ShoppingCartService) injector.getInstance((ShoppingCartService.class));
-
         shoppingCartService.addSession(morningSession,userMa);
         shoppingCartService.addSession(morningSession,userMa);
-        System.out.println(shoppingCartService.getByUser(userMa));
 
         User userA = userService.findByEmail("a@gmail.com").get();
         shoppingCartService.addSession(afternoonSession,userA);
-        System.out.println(shoppingCartService.getByUser(userA));
-
         shoppingCartService.clear(shoppingCartService.getByUser(userA));
-
     }
 }
