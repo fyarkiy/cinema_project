@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,9 +17,9 @@ public class MovieSession {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "session_id")
     private Long id;
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne
     private Movie movie;
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne
     private CinemaHall cinemaHall;
     @Column(name = "show_time")
     private LocalDateTime showTime;

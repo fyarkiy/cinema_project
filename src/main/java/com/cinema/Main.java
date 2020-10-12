@@ -4,10 +4,12 @@ import com.cinema.lib.Injector;
 import com.cinema.model.CinemaHall;
 import com.cinema.model.Movie;
 import com.cinema.model.MovieSession;
+import com.cinema.model.User;
 import com.cinema.security.AuthenticationService;
 import com.cinema.service.CinemaHallService;
 import com.cinema.service.MovieService;
 import com.cinema.service.MovieSessionService;
+import com.cinema.service.ShoppingCartService;
 import com.cinema.service.UserService;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -74,7 +76,15 @@ public class Main {
         authenticationService.register("a@gmail.com", "abcd");
         authenticationService.register("ma@gmail.com", "dcba");
         UserService userService = (UserService) injector.getInstance(UserService.class);
-        System.out.println(userService.findByEmail("ma2@gmail.com"));
+        User userMa = userService.findByEmail("ma@gmail.com").get();
         authenticationService.register("ma@gmail.com", "dcba");
+        ShoppingCartService shoppingCartService =
+                (ShoppingCartService) injector.getInstance((ShoppingCartService.class));
+        shoppingCartService.addSession(morningSession, userMa);
+        shoppingCartService.addSession(morningSession, userMa);
+
+        User userA = userService.findByEmail("a@gmail.com").get();
+        shoppingCartService.addSession(afternoonSession, userA);
+        shoppingCartService.clear(shoppingCartService.getByUser(userA));
     }
 }
