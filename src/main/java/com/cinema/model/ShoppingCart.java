@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Table(name = "shopping_cart")
 public class ShoppingCart {
     @Id
-    @Column(name = "shopping_cart_id")
+//    @Column(name = "shopping_cart_id")
     private Long id;
     @OneToOne
     @MapsId
