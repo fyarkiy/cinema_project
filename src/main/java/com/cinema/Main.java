@@ -80,11 +80,11 @@ public class Main {
         authenticationService.register("ma@gmail.com", "dcba");
         ShoppingCartService shoppingCartService =
                 (ShoppingCartService) injector.getInstance((ShoppingCartService.class));
-        shoppingCartService.addSession(morningSession,userMa);
-        shoppingCartService.addSession(morningSession,userMa);
+        shoppingCartService.addSession(morningSession, userMa);
+        shoppingCartService.addSession(morningSession, userMa);
 
         User userA = userService.findByEmail("a@gmail.com").get();
-        shoppingCartService.addSession(afternoonSession,userA);
+        shoppingCartService.addSession(afternoonSession, userA);
         shoppingCartService.clear(shoppingCartService.getByUser(userA));
     }
 }

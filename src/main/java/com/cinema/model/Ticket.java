@@ -3,7 +3,6 @@ package com.cinema.model;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,9 +16,9 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ticket_id")
     private Long id;
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne
     private MovieSession movieSession;
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne
     private User user;
 
     public Long getId() {
