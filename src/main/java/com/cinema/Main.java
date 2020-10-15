@@ -76,7 +76,7 @@ public class Main {
 
         movieService.getAll().forEach((ms) -> logger.info(ms.toString()));
         logger.info("get all cinema halls");
-        cinemaHallService.getAll().forEach(logger :: info);
+        cinemaHallService.getAll().forEach(logger::info);
         movieSessionService.findAvailableSessions(1L, LocalDate.of(2020, 10, 10))
                 .forEach((ms) -> logger.info(ms.toString()));
 
