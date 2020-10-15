@@ -75,7 +75,8 @@ public class Main {
         logger.info("tomorrow session " + tomorrowSession + " was added");
 
         movieService.getAll().forEach((ms) -> logger.info(ms.toString()));
-        cinemaHallService.getAll().forEach(System.out::println);
+        logger.info("get all cinema halls");
+        cinemaHallService.getAll().forEach(logger :: info);
         movieSessionService.findAvailableSessions(1L, LocalDate.of(2020, 10, 10))
                 .forEach((ms) -> logger.info(ms.toString()));
 
