@@ -74,11 +74,11 @@ public class Main {
         movieSessionService.add(tomorrowSession);
         logger.info("tomorrow session " + tomorrowSession + " was added");
 
-        movieService.getAll().forEach((ms) -> logger.info(ms.toString()));
+        movieService.getAll().forEach(logger::info);
         logger.info("get all cinema halls");
         cinemaHallService.getAll().forEach(logger::info);
         movieSessionService.findAvailableSessions(1L, LocalDate.of(2020, 10, 10))
-                .forEach((ms) -> logger.info(ms.toString()));
+                .forEach(logger::info);
 
         AuthenticationService authenticationService =
                 (AuthenticationService) injector.getInstance(AuthenticationService.class);
@@ -103,7 +103,7 @@ public class Main {
         shoppingCartService.addSession(afternoonSession, userMa);
         Order orderSecond = ordersService.completeOrder(shoppingCartService
                 .getByUser(userMa).getTickets(), userMa);
-        ordersService.getOrderHistory(userMa).forEach((o) -> logger.info(o.toString()));
+        ordersService.getOrderHistory(userMa).forEach(logger::info);
 
         userService.findByEmail("maZ@gmail.com");
     }
