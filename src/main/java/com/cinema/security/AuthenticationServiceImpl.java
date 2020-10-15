@@ -7,9 +7,11 @@ import com.cinema.model.User;
 import com.cinema.service.ShoppingCartService;
 import com.cinema.service.UserService;
 import com.cinema.util.HashUtil;
+import org.apache.log4j.Logger;
 
 @Dao
 public class AuthenticationServiceImpl implements AuthenticationService {
+    private static final Logger logger = Logger.getLogger(AuthenticationServiceImpl.class);
     @Inject
     private UserService userService;
     @Inject
@@ -27,6 +29,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         User user = new User();
         user.setPassword(password);
         user.setEmail(email);
+        logger.info("Registration of User with e-mail " + email + " was started");
         userService.add(user);
         shoppingCartService.registerNewShoppingCart(user);
         return user;
