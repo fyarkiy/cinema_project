@@ -25,17 +25,17 @@ public class UserDaoImpl implements UserDao {
             session.save(user);
             transaction.commit();
             logger.info("User " + user + " was created.");
+            return user;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("user" + user + "was not created", e);
+            throw new DataProcessingException("User" + user + "was not created", e);
         } finally {
             if (session != null) {
                 session.close();
             }
         }
-        return user;
     }
 
     @Override

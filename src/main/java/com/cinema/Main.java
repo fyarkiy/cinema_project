@@ -51,28 +51,24 @@ public class Main {
         MovieSessionService movieSessionService = (MovieSessionService) injector
                 .getInstance(MovieSessionService.class);
         movieSessionService.add(morningSession);
-        logger.info("Morning session " + morningSession + " added");
 
         MovieSession afternoonSession = new MovieSession();
         afternoonSession.setCinemaHall(blueHall);
         afternoonSession.setMovie(fastFurious);
         afternoonSession.setShowTime(LocalDateTime.of(2020, 10, 10, 16, 00, 00));
         movieSessionService.add(afternoonSession);
-        logger.info("Afternoon session " + afternoonSession + " was added");
 
         MovieSession morningSessionAt13 = new MovieSession();
         morningSessionAt13.setCinemaHall(redHall);
         morningSessionAt13.setMovie(bugs);
         morningSessionAt13.setShowTime(LocalDateTime.of(2020, 10, 10, 13, 00, 00));
         movieSessionService.add(morningSessionAt13);
-        logger.info("Morning session at 13 " + morningSessionAt13 + " was added");
 
         MovieSession tomorrowSession = new MovieSession();
         tomorrowSession.setCinemaHall(redHall);
         tomorrowSession.setMovie(fastFurious);
         tomorrowSession.setShowTime(LocalDateTime.of(2020, 10, 11, 21, 00, 00));
         movieSessionService.add(tomorrowSession);
-        logger.info("tomorrow session " + tomorrowSession + " was added");
 
         movieService.getAll().forEach(logger::info);
         logger.info("get all cinema halls");
