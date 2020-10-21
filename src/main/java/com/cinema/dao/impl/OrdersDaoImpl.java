@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class OrdersDaoImpl implements OrdersDao {
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     public OrdersDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;

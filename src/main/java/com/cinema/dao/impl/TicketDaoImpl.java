@@ -15,6 +15,7 @@ public class TicketDaoImpl implements TicketDao {
     private static final Logger logger = Logger.getLogger(TicketDaoImpl.class);
 
     private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     public TicketDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
