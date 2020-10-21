@@ -5,15 +5,15 @@ import com.cinema.model.User;
 import com.cinema.service.ShoppingCartService;
 import com.cinema.service.UserService;
 import com.cinema.util.HashUtil;
-import org.springframework.stereotype.Repository;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class AuthenticationServiceImpl implements AuthenticationService {
     private static final Logger logger = Logger.getLogger(AuthenticationServiceImpl.class);
-    @Inject
-    private UserService userService;
-    private ShoppingCartService shoppingCartService;
+
+    private final UserService userService;
+    private final ShoppingCartService shoppingCartService;
 
     public AuthenticationServiceImpl(UserService userService,
                                      ShoppingCartService shoppingCartService) {

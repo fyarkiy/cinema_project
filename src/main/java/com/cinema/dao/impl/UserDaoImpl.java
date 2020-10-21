@@ -15,7 +15,6 @@ import org.springframework.stereotype.Repository;
 public class UserDaoImpl implements UserDao {
     private static final Logger logger = Logger.getLogger(UserDaoImpl.class);
 
-    private SessionFactory sessionFactory;
     private final SessionFactory sessionFactory;
 
     public UserDaoImpl(SessionFactory sessionFactory) {

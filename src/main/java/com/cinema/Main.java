@@ -15,11 +15,10 @@ import com.cinema.service.ShoppingCartService;
 import com.cinema.service.UserService;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.apache.log4j.Logger;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
-    private static Injector injector = Injector.getInstance("com.cinema");
     private static final Logger logger = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
@@ -75,7 +74,6 @@ public class Main {
         logger.info("get all cinema halls");
         cinemaHallService.getAll().forEach(logger::info);
         movieSessionService.findAvailableSessions(1L, LocalDate.of(2020, 10, 10))
-                .forEach(System.out::println);
                 .forEach(logger::info);
 
         AuthenticationService authenticationService =

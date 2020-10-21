@@ -3,7 +3,6 @@ package com.cinema.dao.impl;
 import com.cinema.dao.TicketDao;
 import com.cinema.exception.DataProcessingException;
 import com.cinema.model.Ticket;
-import com.cinema.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Repository;
 public class TicketDaoImpl implements TicketDao {
     private static final Logger logger = Logger.getLogger(TicketDaoImpl.class);
 
-    private SessionFactory sessionFactory;
     private final SessionFactory sessionFactory;
 
     public TicketDaoImpl(SessionFactory sessionFactory) {

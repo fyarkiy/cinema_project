@@ -18,13 +18,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MovieSessionDaoImpl implements MovieSessionDao {
+    private static final Logger logger = Logger.getLogger(MovieSessionDaoImpl.class);
+
     private final SessionFactory sessionFactory;
 
     public MovieSessionDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-
-    private static final Logger logger = Logger.getLogger(MovieSessionDaoImpl.class);
 
     @Override
     public MovieSession add(MovieSession movieSession) {

@@ -14,13 +14,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class OrdersDaoImpl implements OrdersDao {
+    private static final Logger logger = Logger.getLogger(OrdersDaoImpl.class);
+
     private final SessionFactory sessionFactory;
 
     public OrdersDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-
-    private static final Logger logger = Logger.getLogger(OrdersDaoImpl.class);
 
     @Override
     public Order add(Order order) {
