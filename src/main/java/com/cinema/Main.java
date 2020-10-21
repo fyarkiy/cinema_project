@@ -82,7 +82,6 @@ public class Main {
         authenticationService.register("ma@gmail.com", "dcba");
         UserService userService = context.getBean(UserService.class);
         User userMa = userService.findByEmail("ma@gmail.com").get();
-        authenticationService.register(userMa.getEmail(), userMa.getPassword());
         ShoppingCartService shoppingCartService =
                 context.getBean(ShoppingCartService.class);
         shoppingCartService.addSession(morningSession, userMa);
