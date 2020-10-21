@@ -1,21 +1,24 @@
 package com.cinema.security;
 
 import com.cinema.exception.AuthenticationException;
-import com.cinema.lib.Dao;
-import com.cinema.lib.Inject;
 import com.cinema.model.User;
 import com.cinema.service.ShoppingCartService;
 import com.cinema.service.UserService;
 import com.cinema.util.HashUtil;
+import org.springframework.stereotype.Repository;
 import org.apache.log4j.Logger;
 
-@Dao
+@Repository
 public class AuthenticationServiceImpl implements AuthenticationService {
     private static final Logger logger = Logger.getLogger(AuthenticationServiceImpl.class);
     @Inject
     private UserService userService;
-    @Inject
     private ShoppingCartService shoppingCartService;
+
+    public AuthenticationServiceImpl(UserService userService, ShoppingCartService shoppingCartService) {
+        this.userService = userService;
+        this.shoppingCartService = shoppingCartService;
+    }
 
     @Override
     public User login(String email, String password) throws AuthenticationException {
