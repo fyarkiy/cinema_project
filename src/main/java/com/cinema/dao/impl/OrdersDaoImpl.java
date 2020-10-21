@@ -7,12 +7,15 @@ import com.cinema.model.Order;
 import com.cinema.model.User;
 import com.cinema.util.HibernateUtil;
 import java.util.List;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 @Dao
 public class OrdersDaoImpl implements OrdersDao {
+    private static final Logger logger = Logger.getLogger(OrdersDaoImpl.class);
+
     @Override
     public Order add(Order order) {
         Session session = null;
@@ -22,6 +25,7 @@ public class OrdersDaoImpl implements OrdersDao {
             transaction = session.beginTransaction();
             session.save(order);
             transaction.commit();
+            logger.info("Order " + order + " was created");
             return order;
         } catch (Exception e) {
             if (transaction != null) {
