@@ -27,4 +27,3 @@ public class UserServiceImpl implements UserService {
         return userDao.findByEmail(email);
     }
 }
-
