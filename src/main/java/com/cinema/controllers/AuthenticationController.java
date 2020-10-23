@@ -4,11 +4,9 @@ import com.cinema.model.dto.UserRequestDto;
 import com.cinema.security.AuthenticationService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/cinema")
 public class AuthenticationController {
     private AuthenticationService authenticationService;
 
@@ -19,6 +17,6 @@ public class AuthenticationController {
     @PostMapping("/registration")
     public void registration(@RequestBody UserRequestDto userRequestDto) {
         authenticationService.register(userRequestDto.getEmail(),
-                                userRequestDto.getPassword());
+                userRequestDto.getPassword());
     }
 }

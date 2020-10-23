@@ -21,8 +21,9 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(String title) {
+    public Movie(String title, String descritpion) {
         this.title = title;
+        this.descritpion = descritpion;
     }
 
     public Long getId() {

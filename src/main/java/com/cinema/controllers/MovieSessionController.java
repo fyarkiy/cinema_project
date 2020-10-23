@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/cinema/movie-sessions")
+@RequestMapping("/movie-sessions")
 public class MovieSessionController {
     private static final String DATE_FORMATTER = "d-MM-yyyy";
     private MovieSessionService movieSessionService;

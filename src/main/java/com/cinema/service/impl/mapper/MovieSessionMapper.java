@@ -5,7 +5,6 @@ import com.cinema.model.dto.MovieSessionRequestDto;
 import com.cinema.model.dto.MovieSessionResponseDto;
 import com.cinema.service.CinemaHallService;
 import com.cinema.service.MovieService;
-import com.cinema.service.MovieSessionService;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Component;
@@ -13,13 +12,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class MovieSessionMapper {
     private static final String DATE_TIME_FORMATTER = "dd-MM-yyyy HH:mm:ss";
-    private final MovieSessionService movieSessionService;
     private final CinemaHallService cinemaHallService;
     private final MovieService movieService;
 
-    public MovieSessionMapper(MovieSessionService movieSessionService,
-                              CinemaHallService cinemaHallService, MovieService movieService) {
-        this.movieSessionService = movieSessionService;
+    public MovieSessionMapper(CinemaHallService cinemaHallService, MovieService movieService) {
         this.cinemaHallService = cinemaHallService;
         this.movieService = movieService;
     }
