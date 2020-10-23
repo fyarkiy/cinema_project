@@ -18,6 +18,13 @@ public class Movie {
     private String title;
     private String descritpion;
 
+    public Movie() {
+    }
+
+    public Movie(String title) {
+        this.title = title;
+    }
+
     public Long getId() {
         return id;
     }
