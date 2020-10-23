@@ -2,12 +2,12 @@ package com.cinema.controllers;
 
 import com.cinema.model.dto.UserRequestDto;
 import com.cinema.security.AuthenticationService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/cinema")
 public class AuthenticationController {
     private AuthenticationService authenticationService;
